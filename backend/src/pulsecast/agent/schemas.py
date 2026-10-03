@@ -10,6 +10,7 @@ class AgentRequest(BaseModel):
     question: str
     max_steps: int = Field(default=6, ge=1, le=12)
     audience: Literal["doctor", "patient"] = "doctor"
+    minute: int = Field(default=32, ge=0, le=90)
 
 
 class AgentResult(BaseModel):

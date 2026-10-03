@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: pulsecast-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements-render.txt
+    startCommand: PYTHONPATH=backend/src uvicorn pulsecast.service.render_api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: PULSECAST_ALLOWED_ORIGINS
+        value: https://davidvalenta-dev.github.io
