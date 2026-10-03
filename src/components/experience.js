@@ -6,7 +6,7 @@ let retainedIntro, retainedEditorial, retainedEarth;
 export function mountExperience(){
  const app=document.querySelector('#app');
  if(retainedIntro){app.prepend(retainedEarth,retainedIntro);app.querySelector('main').before(retainedEditorial);return;}
- const intro=document.createElement('section');intro.className='cinema';intro.id='signal-story';
+ const intro=document.createElement('section');intro.className='cinema';intro.id='home';
  intro.innerHTML=`<canvas class="signal-field" aria-hidden="true"></canvas><div class="cinema-wordmark" aria-hidden="true">PULSECAST</div><div class="cinema-content"><span class="film-label">Wearable research, in perspective</span><h2>See the signal. Understand the story.</h2><p>Explore wearable physiology with the context to ask better questions.</p><div class="hero-actions"><button id="enter-dashboard">Explore PulseCast <i class="ti ti-arrow-up-right" aria-hidden="true"></i></button><button id="discover-science">Try the demo <i class="ti ti-player-play" aria-hidden="true"></i></button></div></div><figure class="hero-media"><div class="media-frame"><video class="cinema-video" muted loop playsinline preload="metadata" aria-hidden="true" poster="https://images.pexels.com/videos/8325857/analysis-analyzing-biochemistry-biology-8325857.jpeg?auto=compress&dpr=1&h=1080&w=1920"></video></div><figcaption><span>Illustrative research footage</span><a class="photo-credit" href="https://www.pexels.com/video/laboratory-tools-and-equipment-8325857/" target="_blank" rel="noreferrer">Kindel Media / Pexels</a></figcaption></figure>`;
  mountSignalField(intro.querySelector('canvas'));
  const video=intro.querySelector('video');video.muted=true;
