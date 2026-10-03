@@ -5,27 +5,23 @@ import requests
 class GeminiClient:
     def __init__(self):
         self.key = os.environ.get("GEMINI_API_KEY", "")
-        self.endpoint = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
+        self.endpoint = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
         if not self.key:
             raise RuntimeError("GEMINI_API_KEY is not configured on the server")
 
     def complete(self, messages, max_tokens=700, temperature=0.1):
         system = "\n".join(m["content"] for m in messages if m["role"] == "system")
-        conversation = "\n".join(m["role"].upper() + ": " + m["content"] for m in messages if m["role"] != "system")
+        contents = [{"role": "model" if m["role"] == "assistant" else "user", "parts": [{"text": m["content"]}]} for m in messages if m["role"] != "system"]
         response = requests.post(
-            "https://generativelanguage.googleapis.com/v1beta/interactions",
+            f"https://generativelanguage.googleapis.com/v1beta/models/{self.endpoint}:generateContent",
             headers={"x-goog-api-key": self.key, "Content-Type": "application/json"},
-            json={"model": self.endpoint, "system_instruction": system, "input": conversation,
-                  "store": False, "generation_config": {"max_output_tokens": max_tokens, "temperature": temperature}},
+            json={"systemInstruction": {"parts": [{"text": system}]}, "contents": contents,
+                  "generationConfig": {"maxOutputTokens": max_tokens, "temperature": temperature, "responseMimeType": "application/json"}},
             timeout=25,
         )
         response.raise_for_status()
         payload = response.json()
-        text = payload.get("output_text") or "".join(
-            output.get("text", "") if output.get("type") == "text" else
-            "".join(part.get("text", "") for part in output.get("content", []) if part.get("type") == "text")
-            for output in payload.get("outputs", [])
-        )
+        text = "".join(part.get("text", "") for candidate in payload.get("candidates", [])[:1] for part in candidate.get("content", {}).get("parts", []) if not part.get("thought"))
         if not text:
             raise RuntimeError("The model returned no text")
         return text
