@@ -1,0 +1,4 @@
+command: ['streamlit', 'run', 'src/pulsecast/app/app.py', '--server.port', '${DATABRICKS_APP_PORT}']
+env:
+  - name: STREAMLIT_GATHER_USAGE_STATS
+    value: 'false'

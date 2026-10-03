@@ -1,6 +1,8 @@
 # WolfHacks26
 ## PulseCast
 
+The latest frontend uses a medical theme with Doctor and Patient demo views, physiological trend charts, and the supplied Python/Databricks agent integration. See [backend/INTEGRATION.md](backend/INTEGRATION.md) for setup and hosting. Patient view is a presentation demo fixed to participant 004, not authenticated access control. The backend must be deployed and configured separately for live LLM answers.
+
 Frontend research explorer for wearable-based metabolic phenotype similarity.
 
 ### Run locally
