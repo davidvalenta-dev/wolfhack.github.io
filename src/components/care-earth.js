@@ -1,0 +1,29 @@
+import * as maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import './care-earth.css';
+import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+maplibregl.setWorkerUrl(mapWorkerUrl);
+// Public pharmacy directory only. There is no inventory feed or patient location tracking.
+const pharmacies=[
+ {name:'NC State Campus Health Pharmacy',address:'2815 Cates Avenue',phone:'9195155040',coords:[-78.6757,35.7838],source:'https://healthypack.dasa.ncsu.edu/services-provided/pharmacy/'},
+ {name:'CVS · Hillsborough Street',address:'3001 Hillsborough Street, Suite 100',phone:'9198396393',coords:[-78.6774,35.7895],source:'https://www.cvs.com/store-locator/raleigh-nc-pharmacies/3001-hillsborough-st%2C-suite-100-raleigh-nc-27607/storeid%3D10682'}
+];
+export function mountCareEarth(){
+ const section=document.createElement('section');section.className='care-earth';section.id='care-earth';
+ section.innerHTML=`<div class="cosmos-stars" aria-hidden="true"></div><div class="care-map" aria-label="Interactive globe flying to NC State and nearby pharmacies"></div><div class="care-heading"><span>PULSECAST / CARE EXPLORER</span><h1>A world of care.<br>Closer than you think.</h1><p class="flight-status" role="status">From the cosmos to your campus.</p><div class="care-actions"><button class="skip-flight">Find campus pharmacies ↗</button><button class="replay-flight">Replay journey</button></div></div><aside class="pharmacy-panel" hidden><span>NC STATE · RALEIGH</span><h2>Find a pharmacy.<br>Confirm your insulin.</h2><label>Medication to ask about<select class="insulin-choice"><option>Rapid-acting insulin</option><option>Insulin lispro</option><option>Insulin aspart</option><option>Insulin glulisine</option></select></label><p class="stock-note">Stock unknown. Call to confirm the exact product, formulation, prescription requirements, and pickup availability.</p><div class="pharmacy-results">${pharmacies.map((p,i)=>`<article><button class="focus-pharmacy" data-index="${i}">${p.name} ↗</button><p>${p.address}</p><span class="unknown-stock">Availability not verified</span><div><a href="tel:+1${p.phone}">Call pharmacy</a><a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(p.address+', Raleigh NC')}&travelmode=walking" target="_blank" rel="noreferrer">Directions ↗</a><a href="${p.source}" target="_blank" rel="noreferrer">Source</a></div></article>`).join('')}</div><a class="more-pharmacies" href="https://www.google.com/maps/search/pharmacies+near+NC+State+University+Raleigh/" target="_blank" rel="noreferrer">Search more pharmacies in Google Maps ↗</a><a class="earth-link" href="https://earth.google.com/web/search/North+Carolina+State+University/" target="_blank" rel="noreferrer">Open NC State in Google Earth ↗</a><small>MapLibre / OpenFreeMap · Public directory, not live inventory. Pin positions approximate.</small></aside>`;
+ let map,started=false,timer;const reduced=matchMedia('(prefers-reduced-motion: reduce)');const status=section.querySelector('.flight-status');
+ const reveal=()=>{section.classList.add('arrived');section.querySelector('.pharmacy-panel').hidden=false;status.textContent='NC State University · nearby pharmacy contacts';};
+ const arrive=()=>{clearTimeout(timer);map.stop();map.flyTo({center:[-78.6748,35.786],zoom:14.4,pitch:45,bearing:-15,duration:reduced.matches?0:11000,padding:{right:innerWidth>800?380:0},essential:false});map.once('moveend',reveal);};
+ const journey=()=>{section.classList.remove('arrived');section.querySelector('.pharmacy-panel').hidden=true;status.textContent='From the cosmos to your campus.';map.jumpTo({center:[-30,20],zoom:-.5,pitch:0,bearing:0,padding:0});clearTimeout(timer);timer=setTimeout(arrive,reduced.matches?0:2400);};
+ const boot=async()=>{if(started)return;started=true;try{
+ const response=await fetch('https://tiles.openfreemap.org/styles/dark');if(!response.ok)throw Error('Map unavailable');const style=await response.json();
+ for(const layer of style.layers){const paint=layer.paint||{};if(layer.type==='background')paint['background-color']='#020910';if(layer.type==='fill'&&/water/.test(layer.id))paint['fill-color']='#061d2b';if(layer.type==='fill'&&/landcover|landuse/.test(layer.id))paint['fill-color']='#102b38';if(layer.type==='line'&&/road|highway/.test(layer.id))paint['line-color']='#38778a';layer.paint=paint;}
+ map=new maplibregl.Map({container:section.querySelector('.care-map'),style,center:[-30,20],zoom:-.5,attributionControl:true,cooperativeGestures:true});map.addControl(new maplibregl.NavigationControl(),'bottom-left');
+ map.on('load',()=>{map.setProjection({type:'globe'});pharmacies.forEach((p,i)=>{const pin=document.createElement('button');pin.className='care-pin';pin.textContent='+';pin.setAttribute('aria-label',p.name);pin.onclick=()=>focus(i);new maplibregl.Marker({element:pin}).setLngLat(p.coords).addTo(map);});journey();});
+ const focus=i=>{const p=pharmacies[i];map.flyTo({center:p.coords,zoom:16,pitch:40,duration:reduced.matches?0:1600,padding:{right:innerWidth>800?380:0}});section.querySelectorAll('article').forEach((el,j)=>el.classList.toggle('selected',i===j));};
+ section.querySelectorAll('.focus-pharmacy').forEach(button=>button.onclick=()=>focus(Number(button.dataset.index)));
+ section.querySelector('.skip-flight').onclick=()=>{map.stop();map.jumpTo({center:[-78.6748,35.786],zoom:14.4,pitch:45,padding:{right:innerWidth>800?380:0}});clearTimeout(timer);reveal();};section.querySelector('.replay-flight').onclick=journey;
+ new ResizeObserver(()=>map.resize()).observe(section);map.on('error',()=>{status.textContent='Some map tiles could not load. Pharmacy contacts remain available.';});
+ }catch{status.textContent='Map unavailable. Use the pharmacy contacts or Google Maps below.';reveal();}};
+ requestAnimationFrame(boot);return section;
+}
