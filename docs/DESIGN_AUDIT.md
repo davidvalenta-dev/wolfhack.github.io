@@ -43,3 +43,7 @@ Build, cohort tests, mobile overflow, desktop navigation geometry, light/dark st
 - Browser inspection at 1470px desktop and 390px mobile: no horizontal overflow, video playing, SVG icons rendered, both themes readable, patient cohort selector absent, evidence dialog opens.
 - Production-preview Lighthouse: Performance 100, Accessibility 100, SEO 100. Best Practices 73 reflects the preview origin being excluded by backend CORS and cookies on third-party Pexels imagery. This is a local audit, not a production speed guarantee.
 - Landing preflight: split hero, varied editorial layout, preserved identity/navigation, labeled illustrative media, native typography, single icon family, consistent theme surfaces, reduced-motion/data-saving fallback, and primary/secondary actions checked. Dashboard cards retain their functional data hierarchy.
+
+## Cinematic reference update
+
+User requested Remix.run's majestic presentation. Applied its scale and kinetic-landscape direction through an original cyan PulseCast wordmark, canvas physiology field, subtle existing laboratory video, and stronger editorial typography. Centered composition follows the user's explicit visual reference. Cross logo, full-width workspace, themes, patient/doctor controls, assistant, timeline, search, and research limitations remain intact. No Remix artwork or code was copied. Canvas animation is viewport-gated and reduced-motion aware. Mobile at 390px has no horizontal overflow; both themes were visually checked.

@@ -9,6 +9,7 @@ import {medicalWorkspace} from './components/medical.js';
 
 import './styles/premium.css';
 import './styles/taste.css';
+import './styles/majestic.css';
 import {mountStudio} from './components/studio.js';
 let audience='doctor';
 
