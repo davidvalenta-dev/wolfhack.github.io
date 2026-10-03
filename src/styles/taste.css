@@ -22,3 +22,5 @@ html[data-theme=dark] aside{background:var(--surface);border-color:var(--line)}.
 .ti{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}.ti svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6}
 
 .product-bento:has(> .bento-evidence:first-child){grid-template-columns:1fr}.product-bento:has(> .bento-evidence:first-child)>.bento-evidence{max-width:none}.product-bento:has(> .bento-evidence:first-child) .evidence-stack{max-width:760px}
+/* Use the available page width instead of empty desktop side columns. */
+@media(min-width:768px){aside{padding-left:24px;padding-right:24px}.cinema{max-width:none;padding-left:24px;padding-right:24px}.editorial{max-width:none;width:100%;padding-left:24px;padding-right:24px;box-sizing:border-box}main>header,.content{max-width:none;width:100%;margin:0;padding-left:24px;padding-right:24px;box-sizing:border-box}.research-faq{max-width:none}}
