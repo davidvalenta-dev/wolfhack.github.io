@@ -1,4 +1,4 @@
-/** GPU-rendered morphing particle sculpture. Deterministic targets, scroll-driven assembly. */
+/** GPU-rendered living signal landscapes. Continuous flow with scroll-driven scene transitions. */
 export function mountSignalField(canvas){
  const gl=canvas.getContext('webgl',{alpha:true,antialias:false,powerPreference:'high-performance'});if(!gl){canvas.closest('.cinema')?.classList.add('no-particles');return;}
  const mobile=innerWidth<700,count=mobile?60000:200000;
@@ -10,13 +10,22 @@ export function mountSignalField(canvas){
  void main(){float stage=uProgress*3.;float index=floor(min(stage,2.999));float t=fract(min(stage,2.999));t=smoothstep(0.,1.,t);
  vec3 from=aHeart;vec3 dest=aHelix;if(index>0.5){from=aHelix;dest=aWave;}if(index>1.5){from=aWave;dest=aHeart*.85;}
  float dissolve=sin(t*3.14159265);vec3 p=mix(from,dest,t)+aBurst*dissolve*.85;p.x+=sin(p.y*3.+uProgress*10.)*dissolve*.4;p.z+=cos(p.x*4.)*dissolve*.2;
- float angle=-.16+uProgress*.45+sin(uTime*.12)*.025;float c=cos(angle),s=sin(angle);p.xz=mat2(c,-s,s,c)*p.xz;
+ // Coherent wave trains keep the whole landscape alive between scroll transitions.
+ float flow=sin(p.x*1.4+p.z*1.8-uTime*.85);
+ float pulse=exp(-pow(sin(p.z*.75-uTime*.55)*3.,2.));
+ p.y+=flow*.16+sin(p.x*2.1-p.z*.7+uTime*.6)*.09+pulse*.13;
+ p.x+=sin(p.z*1.15+uTime*.35)*.10;
+ p.z+=cos(p.x*.8-uTime*.4)*.12;
+ float angle=-.16+uProgress*.45+sin(uTime*.18)*.09;float c=cos(angle),s=sin(angle);p.xz=mat2(c,-s,s,c)*p.xz;
  p.y+=sin(uTime*.5+aSeed*30.)*.015;float depth=max(1.2,4.5-p.z);float zoom=2.2;
  gl_Position=vec4(p.x*zoom/uAspect/depth,p.y*zoom/depth-.15,0.,1.);
  gl_PointSize=clamp(uSize*(1.5+1.5/depth)*(0.65+aSeed),1.,4.);
  vec3 cyan=vec3(.16,.8,1.);vec3 gold=vec3(1.,.8,.25);vec3 pink=vec3(1.,.25,.47);vec3 green=vec3(.25,1.,.65);
  vec3 col=mix(cyan,gold,smoothstep(.05,.4,uProgress));col=mix(col,pink,smoothstep(.4,.7,uProgress));col=mix(col,green,smoothstep(.7,1.,uProgress));
- vColor=mix(col,vec3(1.),pow(aSeed,14.)*.85);vAlpha=(.35+aSeed*.6)*(1.-dissolve*.05);
+ float shimmer=.5+.5*sin(p.x*1.3+p.z*2.-uTime*.8);
+ col=mix(col,vec3(.36,.85,1.),.15+.12*sin(uTime*.2));
+ vColor=mix(col,vec3(1.),pow(aSeed,14.)*.85+pulse*.16);
+ vAlpha=(.28+aSeed*.48+shimmer*.16)*(1.-dissolve*.05);
  }`));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
  precision mediump float;varying vec3 vColor;varying float vAlpha;
  void main(){float d=length(gl_PointCoord-.5)*2.;if(d>1.)discard;float glow=pow(1.-d,1.5);gl_FragColor=vec4(vColor,vAlpha*glow);}`));gl.linkProgram(program);gl.useProgram(program);
