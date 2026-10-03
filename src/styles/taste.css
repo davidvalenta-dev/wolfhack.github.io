@@ -20,3 +20,5 @@ html[data-theme=dark] aside{background:var(--surface);border-color:var(--line)}.
 @media(prefers-reduced-transparency:reduce){aside,.audience-tabs,.hero-actions button{backdrop-filter:none;background:var(--surface)}}
 
 .ti{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}.ti svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6}
+
+.product-bento:has(> .bento-evidence:first-child){grid-template-columns:1fr}.product-bento:has(> .bento-evidence:first-child)>.bento-evidence{max-width:none}.product-bento:has(> .bento-evidence:first-child) .evidence-stack{max-width:760px}
