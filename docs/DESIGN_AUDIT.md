@@ -55,3 +55,7 @@ User clarified that the Remix composition should use a medical background. The h
 ## Scroll-controlled dot scene
 
 Replaced ambient-only motion with a pinned four-chapter scene: scroll progress drives original 3D heart point-cloud rotation, camera framing, laboratory zoom, wordmark departure, and chapter fades. The dots form a stylized heart rather than a diagnostic anatomical model. Links enter existing research subpages. Reduced-motion visitors get static stacked chapters. Invisible chapters are removed from keyboard navigation and marked aria-hidden. Scrolling and scene transitions were inspected in-browser.
+
+## Dissolve and reassembly particles
+
+Replaced the CPU dot surface with a WebGL morph system. Desktop uses 200,000 particles and mobile 60,000; these are real rendering budgets, not a claim of billions. Scroll drives heart → DNA helix → abstract ribbon → heart, with turbulent dispersal between targets and cyan/gold/pink/green color evolution. Buffers are uploaded once; the GPU interpolates position, perspective, additive glow and color. Scene visibility and reduced-motion support remain. WebGL-unavailable clients keep a medical-footage fallback. This is original generative artwork, not a copy of the reference asset.
