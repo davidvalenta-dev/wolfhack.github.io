@@ -1,4 +1,5 @@
 import './styles/app.css';
+import './styles/plugverse.css';
 import {cohort,point,history} from './data/cohort.js';
 
 let participant='004', minute=32, playing=false, speed=1, tab='Overview', question='', timer;
