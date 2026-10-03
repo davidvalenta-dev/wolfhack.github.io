@@ -1,2 +1,2 @@
 import {defineConfig} from 'vite';
-export default defineConfig({base:'/WolfHacks26/'});
+export default defineConfig({base:process.env.PAGES_BASE || '/WolfHacks26/'});
