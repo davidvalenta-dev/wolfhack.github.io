@@ -7,7 +7,7 @@ function refreshStatus(){document.querySelectorAll('.connection-status').forEach
 export function mountStudio({audience,participant,minute,onScene}){
  storyObserver?.disconnect();
  const main=document.querySelector('main');main.id='workspace';
- const brand=document.querySelector('.brand');brand.href='#home';brand.innerHTML='<span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5l2-6 4 13 3-9 2 2h4"/></svg></span>PulseCast<span class="brand-dot">.</span>';
+ const brand=document.querySelector('.brand');brand.href='#home';brand.innerHTML='<span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-width="3.5"/></svg></span>PulseCast<span class="brand-dot">.</span>';
  const status=document.querySelector('.header-right');status.innerHTML='<span class="connection-status"></span><span class="prototype-tag">RESEARCH EDITION</span>';refreshStatus();
  const theme=document.querySelector('.theme-toggle');theme.title='Change appearance';
  document.querySelector('.notice div strong').textContent='Evidence, with context.';
