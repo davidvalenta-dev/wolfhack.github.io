@@ -1,5 +1,6 @@
 import {history} from '../data/cohort.js';
 import {askAgent} from '../services/agent.js';
+import {mountTheme} from './theme.js';
 let savedAnswer='',savedContext='',pending=false,requestVersion=0;
 /** Presentation-only audience switching for public demo records; not authentication. */
 export function medicalWorkspace({audience,participant,minute,onSwitch}){
@@ -9,6 +10,7 @@ export function medicalWorkspace({audience,participant,minute,onSwitch}){
  const backgroundVideo=document.querySelector('.cinema-video');if(backgroundVideo)backgroundVideo.loop=true;
  const workspace=document.querySelector('.workspace');workspace.innerHTML=`<div class="audience-tabs" role="group" aria-label="Workspace view"><button data-audience="doctor" aria-pressed="${audience==='doctor'}">✚ Doctor view</button><button data-audience="patient" aria-pressed="${audience==='patient'}">♡ Patient view</button></div>`;
  workspace.querySelectorAll('button').forEach(b=>b.onclick=()=>onSwitch(b.dataset.audience));
+ mountTheme();
  document.querySelector('.brand-mark').textContent='✚';
  const hero=document.querySelector('.cinema-content');hero.querySelector('h2').innerHTML=audience==='doctor'?'A clearer view.<br><em>More informed care.</em>':'Your health.<br><em>In clearer focus.</em>';
  hero.querySelector('p').innerHTML=audience==='doctor'?'Explore wearable patterns in a clinical research workspace.<br>Patient profiles. Visual trends. Transparent evidence.':'Explore your own wearable profile.<br>Your trends, explained in language you can understand.';

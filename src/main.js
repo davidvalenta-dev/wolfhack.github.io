@@ -5,6 +5,7 @@ import {mountExperience} from './components/experience.js';
 import {cohort,point,history} from './data/cohort.js';
 import {medicalWorkspace} from './components/medical.js';
 import './styles/medical.css';
+import './styles/themes.css';
 let audience='doctor';
 
 let participant='004', minute=32, playing=false, speed=1, tab='Overview', question='', timer;
