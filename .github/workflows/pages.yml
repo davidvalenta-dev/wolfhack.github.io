@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           PAGES_BASE: /${{ github.event.repository.name }}/
+          VITE_API_URL: ${{ vars.PULSECAST_API_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
