@@ -32,7 +32,7 @@ See [REPO_OUTLINE.md](REPO_OUTLINE.md) for the repository map, frontend flow, da
 
 ### Presentation experience
 
-- Continuous 4K laboratory stock film on desktop, HD footage on mobile/data-saving connections, and a still poster for reduced-motion preferences. Film and stock imagery: Kindel Media and Mikhail Nilov / Pexels. Media is illustrative and does not depict research participants.
+- Continuous 4K laboratory stock film on desktop, HD footage on mobile/data-saving connections, and a still poster for reduced-motion preferences. Film and stock imagery: Kindel Media and Mikhail Nilov / Pexels. Bottom consultation photograph: cottonbro studio / Pexels. Media is illustrative and does not depict research participants.
 - Persistent light/dark appearance, floating navigation, and a responsive medical dashboard.
 - Three guided replay scenes: clean baseline, motion artifact, and recovery. Scores and chart segments are suppressed for low-quality synthetic windows.
 - Current-window comparisons with the synthetic session baseline, an inspectable confidence ring, and a quality timeline.
