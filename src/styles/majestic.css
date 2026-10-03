@@ -3,3 +3,37 @@
 .cinema:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 85%,#1d9db31f,transparent 65%);pointer-events:none}.cinema-wordmark{font-size:clamp(65px,13.2vw,220px);font-weight:900;line-height:.95;letter-spacing:-.07em;font-style:italic;color:#147c9d;transform:scaleX(1.04);white-space:nowrap;align-self:center;margin-bottom:55px;font-family:Arial,Helvetica,sans-serif}html[data-theme=dark] .cinema-wordmark{color:#a8e8f0}.cinema-content{z-index:2;text-align:center;max-width:900px;margin:0 auto;position:relative}.film-label{color:var(--muted);margin-bottom:18px;font-size:12px}.cinema h2{font-size:clamp(52px,5.8vw,88px);max-width:900px;line-height:1.02;letter-spacing:-4px;font-weight:650;margin:0 auto 25px;text-wrap:balance}.cinema-content p{max-width:48ch;margin:0 auto;font-size:19px;line-height:1.65}.hero-actions{justify-content:center;margin-top:32px;gap:20px}.hero-actions button{border-radius:8px!important;padding:16px 24px;font-size:14px}.hero-actions button:first-child{background:#176bc0}.hero-actions button:last-child{background:var(--surface);border:1px solid var(--line);padding:16px 24px}.signal-field{position:absolute;inset:auto 0 0;height:650px;width:100%;z-index:0;pointer-events:none}.hero-media{position:absolute;inset:auto 0 0;height:380px;width:100%;z-index:-1;margin:0;animation:none;pointer-events:none}.media-frame{height:100%;width:100%;aspect-ratio:auto;border-radius:0;opacity:.16;mask-image:linear-gradient(transparent,#000)}.cinema-video{object-position:50% 50%}.hero-media figcaption{position:absolute;bottom:18px;left:24px;right:24px;font-size:9px;color:var(--muted);pointer-events:auto;margin:0}.editorial{background:var(--surface)}.research-intro{padding:25px 0;border-top:0}.research-intro>span{font-size:18px}.story-heading h2,.research-faq h2{font-size:clamp(32px,4.2vw,64px);line-height:1.06;letter-spacing:-2px}.research-timeline h2{font-size:32px;letter-spacing:-1px}.product-story{padding-top:85px}.product-bento .bento-evidence{border:1px solid var(--line);border-radius:12px}.research-faq>div{border-radius:12px}.scroll-title h2 span{letter-spacing:-3px}.content{padding-top:36px}.page-head h1{font-size:42px}.card{border-radius:14px}.brand-mark{border-radius:5px}.session-actions{border-radius:12px}
 @media(max-width:767px){.cinema{min-height:790px;padding:152px 20px 110px}.cinema-wordmark{font-size:13vw;letter-spacing:-.075em;margin-bottom:55px;transform:none}.cinema h2{font-size:49px;line-height:1.04;letter-spacing:-2.7px}.film-label{font-size:11px}.cinema-content p{font-size:16px;max-width:30ch}.hero-actions{gap:12px;flex-wrap:wrap;margin-top:27px}.hero-actions button,.hero-actions button:last-child{font-size:12px;padding:14px 17px}.signal-field{height:490px}.hero-media{height:300px}.hero-media figcaption{left:20px;right:20px;font-size:8px}.hero-media figcaption span{max-width:100px}.research-intro>span{font-size:16px}.research-timeline h2{font-size:27px}.page-head h1{font-size:31px}.research-faq h2{font-size:35px;letter-spacing:-1.3px}.scroll-title h2 span{letter-spacing:-2px}}
 @media(prefers-reduced-motion:reduce){.cinema-content,.cinema-wordmark{animation:none!important}}
+/* A focused front door; research tools have their own hash-addressable pages. */
+body[data-page=home] main,body[data-page=home] #scroll-showcase,body[data-page=home] .editorial{display:none}
+body[data-page=workspace] .cinema,body[data-page=workspace] .editorial,body[data-page=workspace] #scroll-showcase{display:none}
+body[data-page=workspace] main{padding-top:90px;min-height:100vh}
+.product-story{display:none}
+body[data-page=home] .cinema{min-height:100svh;padding:160px 5vw 95px;justify-content:center;align-items:flex-start}
+body[data-page=home] .cinema-wordmark{position:absolute;left:5vw;top:110px;font-size:19px;letter-spacing:.13em;transform:none;font-style:normal;margin:0;font-weight:700}
+body[data-page=home] .cinema-content{margin:0;text-align:left;max-width:850px}
+body[data-page=home] .cinema h2{font-size:clamp(58px,6.6vw,102px);line-height:1.01;letter-spacing:-4.5px;text-align:left;margin:0 0 28px;max-width:850px;text-wrap:balance}
+body[data-page=home] .cinema-content p{max-width:36ch;margin:0;font-size:19px}
+body[data-page=home] .hero-actions{justify-content:flex-start}
+.signal-field{inset:0;height:100%;width:100%;z-index:0;opacity:1}
+.cinema-content{background:linear-gradient(90deg,var(--bg),transparent);padding:20px 30px 25px 0;pointer-events:auto}
+.hero-media{display:none}
+.cinema:after{content:'Public research data · Illustrative replay · Not for clinical use';position:absolute;bottom:26px;left:5vw;color:var(--muted);font-size:11px;z-index:2}
+body[data-page=workspace] .research-faq{margin-top:15px;padding-bottom:40px}
+@media(max-width:767px){body[data-page=home] .cinema{padding:190px 24px 90px;min-height:100svh}body[data-page=home] .cinema-wordmark{left:24px;top:143px;font-size:14px}body[data-page=home] .cinema h2{font-size:54px;letter-spacing:-2.7px}body[data-page=home] .cinema-content p{font-size:16px}.cinema-content{padding-right:0;background:none}.cinema:after{left:24px;right:24px;line-height:1.8;font-size:10px}body[data-page=workspace] main{padding-top:118px}}
+/* Match the reference composition with a real moving medical background. */
+body[data-page=home] .cinema{padding:112px 24px 95px;min-height:100svh;justify-content:flex-start;align-items:center}
+body[data-page=home] .cinema-wordmark{position:relative;inset:auto;font-size:clamp(66px,13.2vw,220px);letter-spacing:-.07em;font-style:italic;line-height:.95;margin:0 0 45px;z-index:2;color:#b7edf2}
+body[data-page=home] .cinema-content{margin:0 auto;text-align:center;max-width:900px;background:none;padding:0}
+body[data-page=home] .cinema h2{font-size:clamp(52px,5.8vw,88px);max-width:900px;text-align:center;line-height:1.02;letter-spacing:-4px;margin:0 auto 24px;color:#f5f9fc;text-shadow:0 2px 22px #0006}
+body[data-page=home] .cinema-content p{max-width:45ch;margin:0 auto;font-size:19px;color:#dbe9ed}
+body[data-page=home] .film-label{color:#dbe9ed}
+body[data-page=home] .hero-actions{justify-content:center}
+body[data-page=home] .hero-actions button:last-child{background:#10202ddd;color:#d9efff;border-color:#627989}
+.hero-media{display:block;position:absolute;inset:0;height:100%;width:100%;z-index:-2;pointer-events:none}
+.media-frame{height:100%;opacity:1;mask-image:none;background:#06121d;border-radius:0}
+.cinema-video{object-fit:cover;object-position:70% center}
+.cinema:before{z-index:-1;background:linear-gradient(180deg,#020910d9 0%,#06121db8 36%,#06121d9e 70%,#020910bd 100%)}
+.signal-field{inset:auto 0 0;height:45%;opacity:.3;z-index:0}
+.hero-media figcaption{display:none}
+.cinema:after{color:#c5d9df;font-size:10px;left:24px;right:24px;text-align:center;content:'Illustrative laboratory footage / Pexels · Public research data · Not for clinical use'}
+@media(max-width:767px){body[data-page=home] .cinema{padding:154px 20px 95px;min-height:100svh}body[data-page=home] .cinema-wordmark{position:relative;inset:auto;font-size:13vw;margin-bottom:48px}body[data-page=home] .cinema h2{font-size:49px;letter-spacing:-2.7px}body[data-page=home] .cinema-content p{font-size:16px;max-width:30ch}.cinema:after{font-size:9px;line-height:1.7}.cinema-video{object-position:65% center}}

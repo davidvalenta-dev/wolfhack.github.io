@@ -47,3 +47,7 @@ Build, cohort tests, mobile overflow, desktop navigation geometry, light/dark st
 ## Cinematic reference update
 
 User requested Remix.run's majestic presentation. Applied its scale and kinetic-landscape direction through an original cyan PulseCast wordmark, canvas physiology field, subtle existing laboratory video, and stronger editorial typography. Centered composition follows the user's explicit visual reference. Cross logo, full-width workspace, themes, patient/doctor controls, assistant, timeline, search, and research limitations remain intact. No Remix artwork or code was copied. Canvas animation is viewport-gated and reduced-motion aware. Mobile at 390px has no horizontal overflow; both themes were visually checked.
+
+## Focused medical homepage and subpages
+
+User clarified that the Remix composition should use a medical background. The homepage now shows a full-screen continuous laboratory film with prominent lettering and centered editorial content; dashboard information is on hash-addressable Overview, Cohort, Validation and Methodology pages. Hash routes support reloads and browser back/forward on GitHub Pages. Accordion deep links open Methodology with the selected explanation. Existing stock video is credited and reduced-motion/data-saving visitors see its poster. Patient view switching retains presentation-only scope.

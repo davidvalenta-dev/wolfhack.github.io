@@ -17,7 +17,7 @@ export function mountExperience(){
  const editorial=document.createElement('section');editorial.className='editorial';
  editorial.innerHTML=`<div class="research-intro"><span>16 participant profiles from open research</span><p>Observed HbA1c labels. Illustrative wearable replay. Model validation pending.</p><a href="https://physionet.org/content/big-ideas-glycemic-wearable/1.1.3/" target="_blank" rel="noreferrer">Explore the dataset <i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>`;
  app.prepend(intro);app.querySelector('main').before(editorial);
- intro.querySelector('#enter-dashboard').onclick=()=>document.querySelector('main').scrollIntoView({behavior:'smooth'});
+ intro.querySelector('#enter-dashboard').onclick=()=>{location.hash='/overview';};
  intro.querySelector('#discover-science').onclick=()=>document.dispatchEvent(new Event('pulsecast:demo'));
  retainedIntro=intro;retainedEditorial=editorial;
 }
