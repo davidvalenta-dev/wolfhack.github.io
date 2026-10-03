@@ -36,7 +36,7 @@ export function medicalWorkspace({audience,participant,minute,onSwitch}){
  document.querySelector('.two-col.lower').before(charts);
  const assistant=document.querySelector('.explain');
  assistant.querySelector('h2').textContent=audience==='doctor'?'Clinical insight assistant':'My health assistant';
- assistant.querySelector('.assistant-footer').textContent='Databricks LLM integration · Backend connection required';
+ assistant.querySelector('.assistant-footer').textContent='Gemini assistant · Research demo';
  const context=`${audience}:${participant}`;
  if(savedContext!==context){savedAnswer='';savedContext=context;pending=false;requestVersion++;}
  const answer=assistant.querySelector('.answer');answer.textContent=savedAnswer||'Ask a question about the selected participant. Live answers require the configured backend.';

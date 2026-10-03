@@ -5,7 +5,7 @@ import requests
 class GeminiClient:
     def __init__(self):
         self.key = os.environ.get("GEMINI_API_KEY", "")
-        self.endpoint = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+        self.endpoint = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
         if not self.key:
             raise RuntimeError("GEMINI_API_KEY is not configured on the server")
 
