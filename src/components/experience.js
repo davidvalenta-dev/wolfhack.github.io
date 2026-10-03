@@ -1,3 +1,4 @@
+import {mountScrollStory} from './scroll-story.js';
 import {mountSignalField} from './signal-field.js';
 /** Existing brand retained. Media is illustrative, not a study participant or device claim. */
 let retainedIntro, retainedEditorial;
@@ -19,5 +20,5 @@ export function mountExperience(){
  app.prepend(intro);app.querySelector('main').before(editorial);
  intro.querySelector('#enter-dashboard').onclick=()=>{location.hash='/overview';};
  intro.querySelector('#discover-science').onclick=()=>document.dispatchEvent(new Event('pulsecast:demo'));
- retainedIntro=intro;retainedEditorial=editorial;
+ retainedIntro=mountScrollStory(intro);retainedEditorial=editorial;
 }

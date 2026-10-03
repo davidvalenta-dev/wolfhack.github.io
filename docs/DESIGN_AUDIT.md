@@ -51,3 +51,7 @@ User requested Remix.run's majestic presentation. Applied its scale and kinetic-
 ## Focused medical homepage and subpages
 
 User clarified that the Remix composition should use a medical background. The homepage now shows a full-screen continuous laboratory film with prominent lettering and centered editorial content; dashboard information is on hash-addressable Overview, Cohort, Validation and Methodology pages. Hash routes support reloads and browser back/forward on GitHub Pages. Accordion deep links open Methodology with the selected explanation. Existing stock video is credited and reduced-motion/data-saving visitors see its poster. Patient view switching retains presentation-only scope.
+
+## Scroll-controlled dot scene
+
+Replaced ambient-only motion with a pinned four-chapter scene: scroll progress drives original 3D heart point-cloud rotation, camera framing, laboratory zoom, wordmark departure, and chapter fades. The dots form a stylized heart rather than a diagnostic anatomical model. Links enter existing research subpages. Reduced-motion visitors get static stacked chapters. Invisible chapters are removed from keyboard navigation and marked aria-hidden. Scrolling and scene transitions were inspected in-browser.
