@@ -6,7 +6,7 @@ export function medicalWorkspace({audience,participant,minute,onSwitch}){
  document.body.dataset.audience=audience;
  document.querySelector('.motion-toggle')?.remove();
  document.querySelector('.video-quality')?.remove();
- const backgroundVideo=document.querySelector('.cinema-video');if(backgroundVideo)backgroundVideo.loop=false;
+ const backgroundVideo=document.querySelector('.cinema-video');if(backgroundVideo)backgroundVideo.loop=true;
  const workspace=document.querySelector('.workspace');workspace.innerHTML=`<div class="audience-tabs" role="group" aria-label="Workspace view"><button data-audience="doctor" aria-pressed="${audience==='doctor'}">✚ Doctor view</button><button data-audience="patient" aria-pressed="${audience==='patient'}">♡ Patient view</button></div>`;
  workspace.querySelectorAll('button').forEach(b=>b.onclick=()=>onSwitch(b.dataset.audience));
  document.querySelector('.brand-mark').textContent='✚';
