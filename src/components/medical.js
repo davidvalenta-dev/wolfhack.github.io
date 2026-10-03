@@ -9,14 +9,13 @@ export function medicalWorkspace({audience,participant,minute,onSwitch,onQuestio
  document.querySelector('.motion-toggle')?.remove();
  document.querySelector('.video-quality')?.remove();
  const backgroundVideo=document.querySelector('.cinema-video');if(backgroundVideo)backgroundVideo.loop=true;
- const workspace=document.querySelector('.workspace');workspace.innerHTML=`<div class="audience-tabs" role="group" aria-label="Workspace view"><button data-audience="doctor" aria-pressed="${audience==='doctor'}">✚ Doctor view</button><button data-audience="patient" aria-pressed="${audience==='patient'}">♡ Patient view</button></div>`;
+ const workspace=document.querySelector('.workspace');workspace.innerHTML=`<div class="audience-tabs" role="group" aria-label="Workspace view"><button data-audience="doctor" aria-pressed="${audience==='doctor'}"><i class="ti ti-stethoscope" aria-hidden="true"></i> Doctor view</button><button data-audience="patient" aria-pressed="${audience==='patient'}"><i class="ti ti-heart" aria-hidden="true"></i> Patient view</button></div>`;
  workspace.querySelectorAll('button').forEach(b=>b.onclick=()=>onSwitch(b.dataset.audience));
  mountTheme();
  document.querySelector('.brand-mark').textContent='✚';
- const hero=document.querySelector('.cinema-content');hero.querySelector('h2').innerHTML=audience==='doctor'?'See the signal.<br><em>Understand the story.</em>':'Your signals.<br><em>Your story.</em>';
- hero.querySelector('p').innerHTML=audience==='doctor'?'A new perspective on wearable physiology.<br>Built for curious clinicians. Designed around people.':'Explore your own wearable profile.<br>Your trends, explained in language you can understand.';
- document.querySelector('.film-label').innerHTML='<i></i> PULSECAST / WEARABLE INTELLIGENCE';
- document.querySelector('.hero-footnote').textContent='Research prototype · Illustrative wearable data · Not a diagnostic tool';
+ const hero=document.querySelector('.cinema-content');hero.querySelector('h2').textContent=audience==='doctor'?'See the signal. Understand the story.':'Your signals. Your story.';
+ hero.querySelector('p').textContent=audience==='doctor'?'Explore wearable physiology with the context to ask better questions.':'Explore your wearable profile with clear explanations of what the signals mean.';
+ document.querySelector('.film-label').textContent='Wearable research, in perspective';
  document.querySelector('.editorial').hidden=false;
  document.querySelector('#discover-science').onclick=()=>document.dispatchEvent(new Event('pulsecast:demo'));
  const heading=document.querySelector('.page-head h1');if(document.querySelector('#play'))heading.textContent=audience==='doctor'?'Patient overview':'My health overview';
