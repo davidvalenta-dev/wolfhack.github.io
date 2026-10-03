@@ -46,3 +46,4 @@ body[data-page=home] .cinema{background:#020910}.signal-field{inset:0;height:100
 #home-scroll-story .cinema-content{animation:none!important}
 body[data-page=home] .media-frame{opacity:0}.cinema:before{background:radial-gradient(ellipse at 50% 65%,#10152a66,transparent 70%)}.signal-field{filter:drop-shadow(0 0 5px #69cbff22)}.cinema-content,.scroll-story-copy{text-shadow:0 2px 5px #020910,0 0 30px #020910}.scroll-story-copy p,.cinema-content p{background:#02091088;border-radius:8px;padding:8px 14px}.cinema:after{content:'Original generative particle art · Illustrative research experience · Not for clinical use'}
 body[data-page=home] .cinema.no-particles .media-frame{opacity:.45}
+.signal-field{filter:drop-shadow(0 0 7px #69cbff33)}
